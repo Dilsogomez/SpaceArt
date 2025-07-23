@@ -6,7 +6,7 @@ import { Badge } from "../components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { mockArtworks, mockCategories } from "../mock";
-import { Search, Filter, Grid, List, Heart, Eye, Star, TrendingUp } from "lucide-react";
+import { Search, Filter, Grid, List, Heart, Eye, Star, TrendingUp, Palette } from "lucide-react";
 
 const Gallery = () => {
   const [artworks, setArtworks] = useState([]);
@@ -71,39 +71,39 @@ const Gallery = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-background">
+    <div className="pt-20 min-h-screen bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
-            <Star className="h-6 w-6 text-yellow-500 mr-2" />
-            <Badge variant="outline">Galeria Cósmica</Badge>
+            <Palette className="h-6 w-6 text-pink-500 mr-2" />
+            <Badge variant="outline" className="border-pink-300 text-pink-600">Galeria Criativa</Badge>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Explore o Universo Artístico
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+            Explore o Mundo da Arte
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Descubra obras impressionantes criadas por artistas visionários de todo o cosmos digital
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Descubra obras impressionantes criadas por artistas talentosos de todo o Brasil
           </p>
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 mb-8">
+        <div className="bg-white/70 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 mb-8 shadow-lg">
           <div className="flex flex-col lg:flex-row gap-4 items-center">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <Input
                 placeholder="Buscar por título, artista ou tag..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-background/50"
+                className="pl-10 bg-white/70 border-gray-200"
               />
             </div>
 
             {/* Category Filter */}
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-48 bg-background/50">
+              <SelectTrigger className="w-48 bg-white/70 border-gray-200">
                 <SelectValue placeholder="Categoria" />
               </SelectTrigger>
               <SelectContent>
@@ -118,7 +118,7 @@ const Gallery = () => {
 
             {/* Sort */}
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-48 bg-background/50">
+              <SelectTrigger className="w-48 bg-white/70 border-gray-200">
                 <SelectValue placeholder="Ordenar por" />
               </SelectTrigger>
               <SelectContent>
@@ -135,6 +135,7 @@ const Gallery = () => {
                 variant={viewMode === "grid" ? "default" : "outline"}
                 size="icon"
                 onClick={() => setViewMode("grid")}
+                className={viewMode === "grid" ? "bg-pink-500 hover:bg-pink-600" : "border-gray-200 text-gray-600 hover:text-pink-500"}
               >
                 <Grid className="h-4 w-4" />
               </Button>
@@ -142,6 +143,7 @@ const Gallery = () => {
                 variant={viewMode === "list" ? "default" : "outline"}
                 size="icon"
                 onClick={() => setViewMode("list")}
+                className={viewMode === "list" ? "bg-pink-500 hover:bg-pink-600" : "border-gray-200 text-gray-600 hover:text-pink-500"}
               >
                 <List className="h-4 w-4" />
               </Button>
@@ -151,13 +153,13 @@ const Gallery = () => {
 
         {/* Categories Tabs */}
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
-          <TabsList className="bg-muted/50 p-1 h-auto">
-            <TabsTrigger value="all" className="px-6 py-3">
+          <TabsList className="bg-white/70 p-1 h-auto border border-gray-200/50">
+            <TabsTrigger value="all" className="px-6 py-3 data-[state=active]:bg-pink-500 data-[state=active]:text-white">
               <TrendingUp className="h-4 w-4 mr-2" />
               Todas
             </TabsTrigger>
             {mockCategories.slice(0, 5).map((category) => (
-              <TabsTrigger key={category.id} value={category.name} className="px-6 py-3">
+              <TabsTrigger key={category.id} value={category.name} className="px-6 py-3 data-[state=active]:bg-pink-500 data-[state=active]:text-white">
                 {category.name}
               </TabsTrigger>
             ))}
@@ -166,12 +168,12 @@ const Gallery = () => {
 
         {/* Results Info */}
         <div className="flex items-center justify-between mb-6">
-          <p className="text-muted-foreground">
+          <p className="text-gray-600">
             Exibindo {filteredArtworks.length} de {artworks.length} obras
           </p>
           <div className="flex items-center space-x-2">
-            <Filter className="h-4 w-4 text-muted-foreground" />
-            <span className="text-sm text-muted-foreground">
+            <Filter className="h-4 w-4 text-gray-400" />
+            <span className="text-sm text-gray-500">
               {selectedCategory !== "all" && `Categoria: ${selectedCategory}`}
               {searchQuery && ` • Busca: "${searchQuery}"`}
             </span>
@@ -187,7 +189,7 @@ const Gallery = () => {
           {filteredArtworks.map((artwork) => (
             <Card 
               key={artwork.id} 
-              className={`group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
+              className={`group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white ${
                 viewMode === "list" ? "flex" : ""
               }`}
             >
@@ -206,28 +208,28 @@ const Gallery = () => {
                   <Button
                     size="icon"
                     variant="secondary"
-                    className="h-8 w-8 bg-white/20 backdrop-blur-sm hover:bg-white/30"
+                    className="h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
                     onClick={() => handleLike(artwork.id)}
                   >
                     <Heart 
                       className={`h-4 w-4 ${
-                        likedArtworks.has(artwork.id) ? "fill-red-500 text-red-500" : "text-white"
+                        likedArtworks.has(artwork.id) ? "fill-red-500 text-red-500" : "text-gray-600"
                       }`} 
                     />
                   </Button>
                   <Button
                     size="icon"
                     variant="secondary"
-                    className="h-8 w-8 bg-white/20 backdrop-blur-sm hover:bg-white/30"
+                    className="h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
                   >
-                    <Eye className="h-4 w-4 text-white" />
+                    <Eye className="h-4 w-4 text-gray-600" />
                   </Button>
                 </div>
 
                 {/* Featured Badge */}
                 {artwork.featured && (
                   <div className="absolute top-4 left-4">
-                    <Badge className="bg-yellow-500/90 text-black backdrop-blur-sm">
+                    <Badge className="bg-yellow-500 text-white backdrop-blur-sm">
                       <Star className="h-3 w-3 mr-1" />
                       Destaque
                     </Badge>
@@ -237,20 +239,20 @@ const Gallery = () => {
 
               <CardContent className={`p-6 ${viewMode === "list" ? "flex-1" : ""}`}>
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-xl font-semibold group-hover:text-blue-500 transition-colors line-clamp-1">
+                  <h3 className="text-xl font-semibold group-hover:text-pink-500 transition-colors line-clamp-1">
                     {artwork.title}
                   </h3>
-                  <Badge variant="secondary" className="ml-2 flex-shrink-0">
+                  <Badge variant="secondary" className="ml-2 flex-shrink-0 bg-purple-100 text-purple-700">
                     {artwork.category}
                   </Badge>
                 </div>
                 
-                <p className="text-muted-foreground mb-4 line-clamp-2">
+                <p className="text-gray-600 mb-4 line-clamp-2">
                   {artwork.description}
                 </p>
                 
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-blue-500">
+                  <span className="text-sm font-medium text-pink-500">
                     Por {artwork.artistName}
                   </span>
                   <div className="flex items-center space-x-1">
@@ -262,7 +264,7 @@ const Gallery = () => {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1 mb-4">
                   {artwork.tags.slice(0, 3).map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
+                    <Badge key={tag} variant="outline" className="text-xs border-gray-300 text-gray-600">
                       #{tag}
                     </Badge>
                   ))}
@@ -274,7 +276,7 @@ const Gallery = () => {
                   </span>
                   <Button 
                     size="sm"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                    className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
                   >
                     Ver Detalhes
                   </Button>
@@ -290,7 +292,7 @@ const Gallery = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="hover:bg-primary hover:text-primary-foreground"
+              className="hover:bg-pink-500 hover:text-white border-pink-300 text-pink-600"
             >
               Carregar Mais Obras
             </Button>
@@ -300,11 +302,11 @@ const Gallery = () => {
         {/* No Results */}
         {filteredArtworks.length === 0 && (
           <div className="text-center py-12">
-            <div className="w-24 h-24 mx-auto mb-6 bg-muted rounded-full flex items-center justify-center">
-              <Search className="h-12 w-12 text-muted-foreground" />
+            <div className="w-24 h-24 mx-auto mb-6 bg-pink-100 rounded-full flex items-center justify-center">
+              <Search className="h-12 w-12 text-pink-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Nenhuma obra encontrada</h3>
-            <p className="text-muted-foreground mb-6">
+            <h3 className="text-xl font-semibold mb-2 text-gray-800">Nenhuma obra encontrada</h3>
+            <p className="text-gray-600 mb-6">
               Tente ajustar os filtros ou buscar por outros termos
             </p>
             <Button 
@@ -312,6 +314,7 @@ const Gallery = () => {
                 setSearchQuery("");
                 setSelectedCategory("all");
               }}
+              className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
             >
               Limpar Filtros
             </Button>

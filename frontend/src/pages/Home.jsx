@@ -5,7 +5,7 @@ import { Card, CardContent } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { mockArtists, mockArtworks, mockStats } from "../mock";
-import { ArrowRight, Star, Users, Image, Heart, TrendingUp, Sparkles } from "lucide-react";
+import { ArrowRight, Star, Users, Image, Heart, TrendingUp, Palette } from "lucide-react";
 
 const Home = () => {
   const [featuredArtworks, setFeaturedArtworks] = useState([]);
@@ -21,43 +21,45 @@ const Home = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
-        {/* Background Animation */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-3/4 w-3 h-3 bg-cyan-400 rounded-full animate-pulse delay-500"></div>
-          <div className="absolute bottom-1/4 left-1/2 w-1 h-1 bg-pink-400 rounded-full animate-pulse delay-700"></div>
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 overflow-hidden">
+        {/* Background Art Elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full animate-bounce"></div>
+          <div className="absolute top-3/4 right-1/4 w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-3/4 w-5 h-5 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-bounce delay-500"></div>
+          <div className="absolute bottom-1/4 left-1/2 w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full animate-pulse delay-700"></div>
+          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-gradient-to-r from-purple-400 to-violet-500 rounded-full animate-bounce delay-300"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-6 h-6 bg-gradient-to-r from-red-400 to-pink-500 rounded-full animate-pulse delay-900"></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-6">
-              <Sparkles className="h-8 w-8 text-blue-500 mr-3 animate-spin" />
-              <Badge variant="secondary" className="text-sm px-4 py-2 bg-blue-500/10 text-blue-400 border-blue-500/20">
-                Plataforma do Futuro
+              <Palette className="h-8 w-8 text-pink-500 mr-3 animate-spin" />
+              <Badge variant="secondary" className="text-sm px-4 py-2 bg-gradient-to-r from-pink-500/10 to-purple-500/10 text-pink-600 border-pink-500/20">
+                Plataforma Criativa
               </Badge>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent leading-tight">
-              Explore o Cosmos
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent leading-tight">
+              Seu Espaço
               <br />
-              <span className="text-white">Através da Arte</span>
+              <span className="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent">Para Criar</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Descubra um universo de criatividade onde artistas visionários transformam 
-              o espaço infinito em obras que tocam a alma e revolucionam o mercado digital.
+            <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Descubra um universo de criatividade onde artistas visionários compartilham suas obras, 
+              conectam-se com uma comunidade apaixonada e transformam paixão em profissão.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 text-lg transform hover:scale-105 transition-all duration-300"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg transform hover:scale-105 transition-all duration-300"
                 asChild
               >
                 <Link to="/gallery">
-                  Explorar Galeria
+                  Explorar Arte
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -65,11 +67,11 @@ const Home = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-white/20 text-white hover:bg-white/10 px-8 py-4 text-lg backdrop-blur-sm"
+                className="border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-4 text-lg backdrop-blur-sm"
                 asChild
               >
                 <Link to="/upload">
-                  Seja um Artista
+                  Começar a Criar
                 </Link>
               </Button>
             </div>
@@ -77,20 +79,20 @@ const Home = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400">{stats.totalArtists.toLocaleString()}</div>
-                <div className="text-sm text-gray-400">Artistas</div>
+                <div className="text-3xl font-bold text-pink-500">{stats.totalArtists.toLocaleString()}</div>
+                <div className="text-sm text-gray-600">Artistas</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400">{stats.totalArtworks.toLocaleString()}</div>
-                <div className="text-sm text-gray-400">Obras</div>
+                <div className="text-3xl font-bold text-purple-500">{stats.totalArtworks.toLocaleString()}</div>
+                <div className="text-sm text-gray-600">Obras</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-cyan-400">{stats.totalLikes.toLocaleString()}</div>
-                <div className="text-sm text-gray-400">Curtidas</div>
+                <div className="text-3xl font-bold text-indigo-500">{stats.totalLikes.toLocaleString()}</div>
+                <div className="text-sm text-gray-600">Curtidas</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-pink-400">+{stats.newThisWeek}</div>
-                <div className="text-sm text-gray-400">Esta Semana</div>
+                <div className="text-3xl font-bold text-orange-500">+{stats.newThisWeek}</div>
+                <div className="text-sm text-gray-600">Esta Semana</div>
               </div>
             </div>
           </div>
@@ -98,22 +100,24 @@ const Home = () => {
       </section>
 
       {/* Featured Artworks */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-br from-yellow-50 to-orange-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
               <Star className="h-6 w-6 text-yellow-500 mr-2" />
-              <Badge variant="outline">Destaque</Badge>
+              <Badge variant="outline" className="border-yellow-300 text-yellow-700">Destaque</Badge>
             </div>
-            <h2 className="text-4xl font-bold mb-4">Obras em Destaque</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Descubra as criações mais impressionantes da nossa comunidade de artistas espaciais
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+              Obras em Destaque
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Descubra as criações mais impressionantes da nossa comunidade de artistas talentosos
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredArtworks.map((artwork) => (
-              <Card key={artwork.id} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <Card key={artwork.id} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white">
                 <div className="relative">
                   <img 
                     src={artwork.image} 
@@ -122,28 +126,28 @@ const Home = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <Badge className="mb-2 bg-white/20 text-white backdrop-blur-sm">
+                    <Badge className="mb-2 bg-white/90 text-gray-800 backdrop-blur-sm">
                       {artwork.category}
                     </Badge>
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-500 transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-500 transition-colors">
                     {artwork.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
+                  <p className="text-gray-600 mb-4 line-clamp-2">
                     {artwork.description}
                   </p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="text-sm font-medium">Por {artwork.artistName}</span>
+                      <span className="text-sm font-medium text-gray-700">Por {artwork.artistName}</span>
                     </div>
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-1">
                         <Heart className="h-4 w-4 text-red-500" />
                         <span className="text-sm">{artwork.likes}</span>
                       </div>
-                      <Badge variant="secondary">{artwork.price}</Badge>
+                      <Badge variant="secondary" className="bg-green-100 text-green-700">{artwork.price}</Badge>
                     </div>
                   </div>
                 </CardContent>
@@ -155,7 +159,7 @@ const Home = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="hover:bg-primary hover:text-primary-foreground"
+              className="hover:bg-orange-500 hover:text-white border-orange-300 text-orange-600"
               asChild
             >
               <Link to="/gallery">
@@ -168,54 +172,60 @@ const Home = () => {
       </section>
 
       {/* Featured Artists */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
-              <Users className="h-6 w-6 text-blue-500 mr-2" />
-              <Badge variant="outline">Comunidade</Badge>
+              <Users className="h-6 w-6 text-green-500 mr-2" />
+              <Badge variant="outline" className="border-green-300 text-green-700">Comunidade</Badge>
             </div>
-            <h2 className="text-4xl font-bold mb-4">Artistas em Destaque</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Conheça os visionários que estão redefinindo a arte espacial no cenário digital
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">
+              Artistas em Destaque
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Conheça os talentos que estão transformando a cena artística brasileira
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredArtists.map((artist) => (
-              <Card key={artist.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <Card key={artist.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-white">
                 <CardContent className="p-6 text-center">
-                  <Avatar className="w-24 h-24 mx-auto mb-4 ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all">
-                    <AvatarImage src={artist.avatar} alt={artist.name} />
-                    <AvatarFallback>{artist.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
+                  <div className="relative mb-4">
+                    <Avatar className="w-24 h-24 mx-auto ring-4 ring-green-100 group-hover:ring-green-300 transition-all">
+                      <AvatarImage src={artist.avatar} alt={artist.name} />
+                      <AvatarFallback className="bg-gradient-to-r from-green-400 to-teal-500 text-white">
+                        {artist.name.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                  </div>
                   
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-green-600 transition-colors">
                     {artist.name}
                   </h3>
                   
-                  <Badge variant="secondary" className="mb-3">
+                  <Badge variant="secondary" className="mb-3 bg-green-100 text-green-700">
                     {artist.specialty}
                   </Badge>
                   
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                     {artist.bio}
                   </p>
                   
-                  <div className="flex justify-center space-x-6 text-sm text-muted-foreground mb-4">
+                  <div className="flex justify-center space-x-6 text-sm text-gray-600 mb-4">
                     <div className="text-center">
-                      <div className="font-semibold text-foreground">{artist.followers.toLocaleString()}</div>
+                      <div className="font-semibold text-gray-800">{artist.followers.toLocaleString()}</div>
                       <div>Seguidores</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-semibold text-foreground">{artist.artworks}</div>
+                      <div className="font-semibold text-gray-800">{artist.artworks}</div>
                       <div>Obras</div>
                     </div>
                   </div>
                   
                   <Button 
                     variant="outline" 
-                    className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    className="group-hover:bg-green-500 group-hover:text-white border-green-300 text-green-600 transition-colors"
                     asChild
                   >
                     <Link to={`/artist/${artist.id}`}>
@@ -230,24 +240,24 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600">
+      <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-red-500">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center justify-center mb-6">
               <TrendingUp className="h-8 w-8 text-white mr-3" />
               <Badge className="bg-white/20 text-white backdrop-blur-sm">
-                Junte-se à Revolução
+                Transforme sua Paixão
               </Badge>
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Pronto para Conquistar
-              <br />o Universo da Arte?
+              Pronto para Compartilhar
+              <br />sua Arte com o Mundo?
             </h2>
             
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Faça parte da comunidade mais inovadora de artistas digitais. 
-              Transforme sua paixão pelo espaço em uma carreira revolucionária.
+              Faça parte da maior comunidade de artistas do Brasil. 
+              Transforme sua criatividade em reconhecimento e oportunidades reais.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
@@ -269,7 +279,7 @@ const Home = () => {
                 asChild
               >
                 <Link to="/gallery">
-                  Explorar Primeiro
+                  Explorar Arte
                 </Link>
               </Button>
             </div>
