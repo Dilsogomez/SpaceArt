@@ -1,1 +1,1733 @@
+[⚠️ Suspicious Content] <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SES | Space </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ====== Tema claro + borda gradiente personalizada ====== */
+        :root {
+            --primary: #ffffff;
+            --secondary: #f5f5f5;
+            --accent: #64ffda;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --btn-bg: #e9e9e9;
+            --ink: #0a192f;
+            --gradient-borda: linear-gradient(90deg, #c084fc, #87cefa, #009c3b, #ffdf00);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: saturate(180%) blur(8px);
+            z-index: 100;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        header.scrolled {
+            padding: 15px 5%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 70px;
+            margin-right: 5px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* ====== Botões (cinza claro + borda gradiente personalizada) ====== */
+        .cta-button,
+        .primary-btn,
+        .secondary-btn,
+        .add-to-cart,
+        .submit-btn,
+        .menu-toggle,
+        .ai-btn {
+            background-color: var(--btn-bg);
+            color: var(--text-primary);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            font-weight: 600;
+            padding: 10px 20px;
+            background-image: linear-gradient(var(--btn-bg), var(--btn-bg)), var(--gradient-borda);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .ai-btn { padding: 8px 16px; font-size: 0.9rem; }
+        .menu-toggle { width: 60px; height: 60px; border-radius: 50%; padding: 0; }
+        .menu-toggle i { color: var(--ink); transition: transform 0.2s ease; }
+        .menu-toggle.active { transform: rotate(45deg); }
+        
+        .cta-button:hover,
+        .primary-btn:hover,
+        .secondary-btn:hover,
+        .add-to-cart:hover,
+        .submit-btn:hover,
+        .menu-toggle:hover,
+        .ai-btn:hover {
+            background-color: #dcdcdc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--ink);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 70% 50%, rgba(100,255,218,0.12) 0%, rgba(255,255,255,0) 55%);
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 10%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--ink);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #e9f6f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            max-width: 80%;
+            max-height: 80%;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--btn-bg);
+            color: var(--ink);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--btn-bg), var(--btn-bg)), var(--gradient-borda);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        
+        .product-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--ink);
+        }
+        
+        .product-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .product-features {
+            margin-bottom: 20px;
+        }
+        
+        .product-features li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .product-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .product-ai-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: center;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--secondary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            transition: transform 0.3s ease;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--ink);
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Testimonials */
+        .testimonials-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background-color: var(--secondary);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--ink);
+        }
+        
+        .author-role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #cfcfcf;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background-image: var(--gradient-borda);
+            background-size: 200% 200%;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            text-align: center;
+            padding: 100px 10%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+        
+        .cta::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            color: var(--ink);
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Floating Menu */
+        .floating-menu {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+        }
+        
+        .menu-items {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.12);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .menu-items.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .menu-item:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .menu-item i {
+            margin-right: 10px;
+            color: var(--ink);
+            font-size: 1.2rem;
+        }
+        
+        .menu-item span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 80px 10% 30px;
+            color: var(--text-secondary);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex-basis: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+        
+        .footer-column p {
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-image: var(--gradient-borda);
+            color: var(--ink);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-image {
+                width: 400px;
+                height: 400px;
+                right: 5%;
+            }
+        
+            .hero-image img {
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+                padding: 20px 5%;
+                border-top: 1px solid rgba(0,0,0,0.06);
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+        
+            nav.active {
+                transform: translateY(0);
+            }
+        
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            nav ul li {
+                margin: 15px 0;
+            }
+        
+            .hero {
+                text-align: center;
+                flex-direction: column;
+                height: auto;
+                padding-top: 120px;
+            }
+        
+            .hero-content {
+                max-width: 100%;
+            }
+        
+            .hero-buttons {
+                justify-content: center;
+            }
+        
+            .hero-image {
+                position: static;
+                transform: none;
+                margin-top: 50px;
+            }
+        
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+        
+            .footer-column {
+                flex-basis: auto;
+            }
+        
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        /* Estilos para os Mockups (CodePen) */
+        .mockups-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            padding: 100px 10%;
+            flex-wrap: wrap;
+        }
+
+        /* Mockup de Notebook */
+        .notebook-mockup {
+            width: 700px;
+            height: 400px;
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border: 10px solid #333;
+        }
+
+        .notebook-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notebook-screen img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        /* Mockup de Celular */
+        .smartphone-mockup {
+            position: relative;
+            width: 320px;
+            height: 640px;
+            border: 15px solid #222;
+            border-radius: 40px;
+            background-color: #000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .smartphone-screen {
+            width: 90%;
+            height: 95%;
+            background-color: #fff;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .smartphone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Estilos do terceiro CodePen - "Pull Menu" */
+        .pull-menu-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 99;
+        }
+        
+        .pull-menu-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+        
+        .pull-menu-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .pull-menu-toggle i {
+            color: var(--ink);
+            font-size: 1.5rem;
+        }
+        
+        .pull-menu-items {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.12);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pull-menu-items.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .pull-menu-item a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .pull-menu-item a:hover {
+            background-color: #e9e9e9;
+        }
+
+        /* Loading Indicator */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #c084fc;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Message Box */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            color: var(--ink);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #009c3b;
+            z-index: 101;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .message-box.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Correções e Estilos do Modal de Demonstração */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Inicia oculto */
+            justify-content: center;
+            align-items: center;
+            z-index: 102;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--primary);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--ink);
+        }
+        
+        .modal-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--ink);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+        }
+        
+        #demo-form .ai-btn, #demo-form .submit-btn {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\download (1).png" alt="Logo">
+            <span  class="cta-button" href="index.html.html">SES | Space </span>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html.html">Inicio</a></li>
+                <li><a href="Explorarsolucoes.html">Produtos</a></li>
+                <li><a href="#features">Recursos</a></li>
+                <li><a href="#testimonials">Feedbacks</a></li>
+                <li><a href="agendar.html">Contato</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="primary-btn mobile-menu-btn" id="mobile-menu-btn"><i class="fas fa-bars"></i></a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Tecnologia e Inovação para o Futuro do seu Negócio</h1>
+            <p>Descubra as soluções digitais da SES que combinam design moderno, segurança robusta e inteligência artificial para impulsionar sua produtividade.</p>
+            <div class="hero-buttons">
+                <a href="Explorarsolucoes.html" class="primary-btn">Explorar Soluções</a>
+                <a href="agendar.html" class="secondary-btn">Agende uma reunião</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\Copilot_20250813_183938-removebg-preview.png" alt="Produto Principal">
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+        <div class="section-title">
+            <h2>Nossas Soluções</h2>
+            <p>Conheça nossa linha completa de produtos desenvolvidos para atender às necessidades do seu negócio</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Space Navegador -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\download (8).png" alt="Space Navegador">
+                    <div class="product-badge">Mais Popular</div>
+                </div>
+                <div class="product-content">
+                    <h3>Space Navegador</h3>
+                    <p>Navegador corporativo com recursos avançados para gestão de acesso e produtividade.</p>
+                    <ul class="product-features">
+                        <li>Plataforma de desenvolvimento integrada</li>
+                        <li>Controle de acesso a sites</li>
+                        <li>Integração com outros produtos SES</li>
+                        <li>IA generativa para buscas inteligentes</li>
+                    </ul>
+                    <div class="product-price">
+                        <span class="price">R$99/mês</span>
+                        <button class="add-to-cart">Assinar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Space Email -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\email.png" alt="Space Email">
+                </div>
+                <div class="product-content">
+                    <h3>Space Email</h3>
+                    <p>Solução completa de e-mail corporativo com integração total ao ecossistema SES.</p>
+                    <ul class="product-features">
+                        <li>Contato nacional e internacional</li>
+                        <li>Caixa de entrada inteligente</li>
+                        <li>Proteção contra spam avançada</li>
+                        <li>Integração com IA generativa</li>
+                    </ul>
+                    <div class="product-price">
+                        <span class="price">R$79/mês</span>
+                        <button class="add-to-cart">Assinar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Space Artcom -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\Copilot_20250813_111525.png" alt="Space Artcom">
+                    <div class="product-badge">Novidade</div>
+                </div>
+                <div class="product-content">
+                    <h3>Space Artcom</h3>
+                    <p>Solução completa para criação de conteúdo com IA generativa integrada.</p>
+                    <ul class="product-features">
+                        <li>Criação de textos, ebooks e PDFs</li>
+                        <li>Ferramenta para apresentações e vídeos</li>
+                        <li>Gráficos e insights automatizados</li>
+                        <li>Armazenamento em nuvem seguro</li>
+                    </ul>
+                    <div class="product-price">
+                        <span class="price">R$149/mês</span>
+                        <button class="add-to-cart">Assinar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SpaceArte -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\download (13).png" alt="SpaceArte">
+                </div>
+                <div class="product-content">
+                    <h3>SpaceArte</h3>
+                    <p>Plataforma completa para criação, exposição e venda de conteúdo artístico.</p>
+                    <ul class="product-features">
+                        <li>Criação de conteúdos multimídia</li>
+                        <li>Marketplace integrado</li>
+                        <li>Compartilhamento e exposições</li>
+                        <li>Portfólio de artista digital</li>
+                    </ul>
+                    <div class="product-price">
+                        <span class="price">R$129/mês</span>
+                        <button class="add-to-cart">Assinar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FeedSpace -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\download (14).png" alt="FeedSpace">
+                </div>
+                <div class="product-content">
+                    <h3>FeedSpace</h3>
+                    <p>Rede social corporativa para compartilhamento de ideias e colaboração.</p>
+                    <ul class="product-features">
+                        <li>Feed de compartilhamento</li>
+                        <li>SpacePlay para vídeos</li>
+                        <li>Interação com likes e comentários</li>
+                        <li>Alternância entre modos de visualização</li>
+                    </ul>
+                    <div class="product-price">
+                        <span class="price">R$89/mês</span>
+                        <button class="add-to-cart">Assinar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pacote Completo -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\download (15).png" alt="Pacote Completo">
+                    <div class="product-badge">Melhor Custo-Benefício</div>
+                </div>
+                <div class="product-content">
+                    <h3>Pacote Completo</h3>
+                    <p>Todos os nossos produtos em um único pacote com desconto especial.</p>
+                    <ul class="product-features">
+                        <li>Todos os produtos SES incluídos</li>
+                        <li>Integração total entre sistemas</li>
+                        <li>Suporte prioritário</li>
+                        <li>Atualizações gratuitas</li>
+                    </ul>
+                    <div class="product-price">
+                        <span class="price">R$399/mês</span>
+                        <button class="add-to-cart"> Assinar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inserção dos CodePens -->
+    <section class="section" id="mockups">
+        <div class="section-title">
+            <h2>Nossos Produtos em Ação</h2>
+            <p>Veja como nossas soluções se integram perfeitamente em diferentes dispositivos.</p>
+        </div>
+        <div class="mockups-section">
+            <!-- Mockup de Notebook -->
+            <div class="notebook-mockup">
+                <div class="notebook-screen">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\Copilot_20250813_182629.png" alt="Notebook Mockup">
+                </div>
+            </div>
+            <!-- Mockup de Celular -->
+            <div class="smartphone-mockup">
+                <div class="smartphone-screen">
+                    <img src="C:\Users\hp\OneDrive - Acadêmico - Ânima Educação\Área de Trabalho\SES\Copilot_20250813_183140.png" alt="Celular Mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="section-title">
+            <h2>Recursos Exclusivos</h2>
+            <p>Descubra o que torna nossos produtos únicos no mercado</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>IA Generativa</h3>
+                <p>Todos os nossos produtos contam com IA generativa especializada para potencializar sua criatividade e produtividade.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Segurança</h3>
+                <p>Proteção de dados e privacidade garantidas com os mais altos padrões de segurança da informação.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-random"></i>
+                </div>
+                <h3>Integração Total</h3>
+                <p>Todos os produtos SES são desenvolvidos para trabalhar juntos, proporcionando uma experiência unificada.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Cloud Storage</h3>
+                <p>Armazenamento em nuvem seguro e redundante para todos os seus arquivos e projetos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Análises Avançadas</h3>
+                <p>Relatórios e insights automatizados para ajudar na tomada de decisões estratégicas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Suporte 24/7</h3>
+                <p>Nossa equipe de suporte está sempre pronta para ajudar, a qualquer hora do dia ou da noite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="testimonials">
+        <div class="section-title">
+            <h2>O que nossos clientes dizem</h2>
+            <p>Histórias reais de sucesso com as soluções da SES</p>
+        </div>
+        <div class="testimonials-slider">
+            <div class="testimonial active" data-index="0">
+                <p class="testimonial-text">"A SES revolucionou a forma como nossa equipe trabalha. A integração dos produtos é impecável e a IA generativa é um verdadeiro game-changer para a nossa criatividade. O suporte ao cliente é simplesmente o melhor que já vimos."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://via.placeholder.com/70" alt="Avatar Cliente 1">
+                    </div>
+                    <span class="author-name">Maria Silva</span>
+                    <span class="author-role">CEO, Inovatech Soluções</span>
+                </div>
+            </div>
+            <div class="testimonial" data-index="1">
+                <p class="testimonial-text">"Nunca imaginei que uma suite de produtos pudesse ser tão coesa. A segurança dos nossos dados aumentou drasticamente e a produtividade da equipe disparou. Recomendo a SES a todas as empresas que buscam excelência."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://via.placeholder.com/70" alt="Avatar Cliente 2">
+                    </div>
+                    <span class="author-name">João Pereira</span>
+                    <span class="author-role">CTO, Creative Digital</span>
+                </div>
+            </div>
+            <div class="testimonial" data-index="2">
+                <p class="testimonial-text">"Com o Space Drive, o compartilhamento de arquivos se tornou muito mais fácil e seguro. Adoramos a interface intuitiva e a IA que nos ajuda a encontrar exatamente o que precisamos, quando precisamos. A SES é o parceiro ideal."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://via.placeholder.com/70" alt="Avatar Cliente 3">
+                    </div>
+                    <span class="author-name">Ana Costa</span>
+                    <span class="author-role">Gerente de Projetos, Futurize Consultoria</span>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <div class="slider-dot active" data-index="0"></div>
+            <div class="slider-dot" data-index="1"></div>
+            <div class="slider-dot" data-index="2"></div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta" id="contact">
+        <h2>Pronto para transformar sua empresa?</h2>
+        <p>Agende uma demonstração gratuita e descubra como nossas soluções podem impulsionar sua criatividade e produtividade.</p>
+        <a href="agendar.html" class="primary-btn" id="bottom-demo-btn">Solicitar</a>
+    </section>
+
+    <!-- Floating Menu -->
+    <div class="floating-menu">
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="menu-items" id="menu-items">
+            <div class="menu-item" id="floating-demo">
+                <i class="fas fa-desktop"></i>
+                <span>Assinar</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>Fale Conosco</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-question-circle"></i>
+                <span>Dúvidas Frequentes</span>
+            </div>
+            <div class="menu-item" id="scroll-top">
+                <i class="fas fa-arrow-up"></i>
+                <span>Voltar ao Topo</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Novo Menu "Pull Menu" - Adição Criativa -->
+    <div class="pull-menu-container">
+        <div class="pull-menu-toggle" id="pull-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="pull-menu-items" id="pull-menu-items">
+            <div class="pull-menu-item"><a href="index.html.html">Inicio</a></div>
+            <div class="pull-menu-item"><a href="Explorarsolucoes.html">Serviço</a></div>
+            <div class="pull-menu-item"><a href="#features">Recursos</a></div>
+            <div class="pull-menu-item"><a href="#agendar.html">Contato</a></div>
+        </div>
+    </div>
+
+    <!-- Demo Request Modal -->
+    <div class="modal" id="demo-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3>Assinar</h3>
+            <form id="demo-form">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail Corporativo</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Empresa</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="button" class="ai-btn" id="generate-invitation-btn">Gerar Convite</button>
+                <button type="submit" class="submit-btn">Enviar Solicitação</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Message Box -->
+    <div id="message-box" class="message-box"></div>
+
+    <script>
+        // JS original mantido
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            testimonials[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showTestimonial(index);
+            });
+        });
+
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuItems = document.getElementById('menu-items');
+        menuToggle.addEventListener('click', () => {
+            menuItems.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        const demoModal = document.getElementById('demo-modal');
+        const bottomDemoBtn = document.getElementById('bottom-demo-btn');
+        const floatingDemoBtn = document.getElementById('floating-demo');
+        const closeModalBtn = document.getElementById('close-modal');
+        const ctaButtons = document.querySelectorAll('.primary-btn, .secondary-btn, .add-to-cart');
+
+        function openModal() {
+            demoModal.classList.add('active');
+        }
+
+        function closeModal() {
+            demoModal.classList.remove('active');
+        }
+        
+        // Abrir modal com diferentes botões
+        ctaButtons.forEach(btn => {
+            if (btn.textContent.includes('Solicitar Demo') || btn.textContent.includes('adicionar ao carrinho')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+        });
+
+        if (floatingDemoBtn) {
+            floatingDemoBtn.addEventListener('click', openModal);
+        }
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        window.addEventListener('click', (event) => {
+            if (event.target === demoModal) {
+                closeModal();
+            }
+        });
+
+        const pullMenuToggle = document.getElementById('pull-menu-toggle');
+        const pullMenuItems = document.getElementById('pull-menu-items');
+        
+        if (pullMenuToggle) {
+            pullMenuToggle.addEventListener('click', () => {
+                pullMenuItems.classList.toggle('active');
+            });
+        }
+
+        // --- Novas funcionalidades com API do Gemini ---
+
+        // Função para mostrar a mensagem
+        function showMessage(text, type = 'success') {
+            const msgBox = document.getElementById('message-box');
+            msgBox.textContent = text;
+            msgBox.style.borderLeftColor = (type === 'error') ? '#ff4d4f' : '#009c3b';
+            msgBox.classList.add('active');
+            setTimeout(() => {
+                msgBox.classList.remove('active');
+            }, 3000);
+        }
+
+        // Função para converter base64 para ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // Função para converter PCM para WAV
+        function pcmToWav(pcm16, sampleRate = 48000) {
+            const numChannels = 1;
+            const bitsPerSample = 16;
+            const byteRate = sampleRate * numChannels * bitsPerSample / 8;
+            const blockAlign = numChannels * bitsPerSample / 8;
+            
+            const wavBuffer = new ArrayBuffer(44 + pcm16.length * 2);
+            const view = new DataView(wavBuffer);
+            
+            // RIFF chunk
+            writeString(view, 0, 'RIFF');
+            view.setUint32(4, 36 + pcm16.length * 2, true);
+            writeString(view, 8, 'WAVE');
+            
+            // FMT chunk
+            writeString(view, 12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true); // audio format (1 = PCM)
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitsPerSample, true);
+            
+            // DATA chunk
+            writeString(view, 36, 'data');
+            view.setUint32(40, pcm16.length * 2, true);
+            
+            // Write PCM data
+            for (let i = 0; i < pcm16.length; i++) {
+                view.setInt16(44 + i * 2, pcm16[i], true);
+            }
+            
+            return new Blob([view], { type: 'audio/wav' });
+        }
+        
+        function writeString(view, offset, string) {
+            for (let i = 0; i < string.length; i++) {
+                view.setUint8(offset + i, string.charCodeAt(i));
+            }
+        }
+
+        // Função para lidar com retentativas de API com backoff exponencial
+        async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(res => setTimeout(res, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                } else {
+                    throw error;
+                }
+            }
+        }
+
+        // Gerar nova descrição do produto
+        document.querySelectorAll('.generate-desc-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const productId = btn.getAttribute('data-product-id');
+                const productCard = btn.closest('.product-card');
+                const productDescElement = productCard.querySelector('.product-description');
+                const productName = productCard.querySelector('.product-name').textContent;
+                const features = Array.from(productCard.querySelectorAll('.product-features li'))
+                                     .map(li => li.textContent).join(', ');
+
+                btn.disabled = true;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `<span class="loading-spinner"></span> Carregando...`;
+
+                const prompt = `Como um especialista em marketing de tecnologia, escreva uma descrição detalhada e envolvente em português para o produto "${productName}" da empresa SES - Space Eart Softers. O produto tem as seguintes características: ${features}. A descrição deve ter cerca de 100 palavras e enfatizar os benefícios para o cliente, usando um tom profissional e moderno.`;
+
+                try {
+                    const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                    const payload = { contents: chatHistory };
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                    
+                    const result = await fetchWithBackoff(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const newDescription = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (newDescription) {
+                        productDescElement.textContent = newDescription;
+                        showMessage('Nova descrição gerada com sucesso!', 'success');
+                    } else {
+                        showMessage('Erro ao gerar a descrição. Tente novamente.', 'error');
+                    }
+                } catch (error) {
+                    console.error('API Error:', error);
+                    showMessage('Erro ao se conectar com a IA. Por favor, verifique sua conexão.', 'error');
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }
+            });
+        });
+
+        // Gerar rascunho de convite de demo
+        const generateInvitationBtn = document.getElementById('generate-invitation-btn');
+        const demoForm = document.getElementById('demo-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const companyInput = document.getElementById('company');
+        const messageInput = document.getElementById('message');
+
+        generateInvitationBtn.addEventListener('click', async () => {
+            const name = nameInput.value;
+            const company = companyInput.value;
+
+            if (!name || !company) {
+                showMessage('Preencha o nome e a empresa para gerar o convite.', 'error');
+                return;
+            }
+
+            generateInvitationBtn.disabled = true;
+            const originalText = generateInvitationBtn.innerHTML;
+            generateInvitationBtn.innerHTML = `<span class="loading-spinner"></span> Gerando...`;
+
+            const prompt = `Escreva um rascunho de e-mail de convite para uma demonstração do produto da empresa SES. O cliente se chama "${name}", da empresa "${company}". O e-mail deve ser formal, amigável e focado em agendar uma conversa para mostrar como as soluções da SES podem ajudar a empresa. Inclua uma chamada para ação para agendar a reunião.`;
+            
+            try {
+                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const invitationText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (invitationText) {
+                    messageInput.value = invitationText;
+                    showMessage('Rascunho de convite gerado!', 'success');
+                } else {
+                    showMessage('Erro ao gerar o convite. Tente novamente.', 'error');
+                }
+            } catch (error) {
+                console.error('API Error:', error);
+                showMessage('Erro ao se conectar com a IA. Por favor, verifique sua conexão.', 'error');
+            } finally {
+                generateInvitationBtn.disabled = false;
+                generateInvitationBtn.innerHTML = originalText;
+            }
+        });
+        
+        // Função para ler a descrição em voz alta
+        document.querySelectorAll('.tts-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const productCard = btn.closest('.product-card');
+                const productDescription = productCard.querySelector('.product-description').textContent;
+
+                btn.disabled = true;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `<span class="loading-spinner"></span> Ouvindo...`;
+
+                try {
+                    const payload = {
+                        contents: [{
+                            parts: [{ text: `Diga em um tom profissional: ${productDescription}` }]
+                        }],
+                        generationConfig: {
+                            responseModalities: ["AUDIO"],
+                            speechConfig: {
+                                voiceConfig: {
+                                    prebuiltVoiceConfig: { voiceName: "Rasalgethi" }
+                                }
+                            }
+                        }
+                    };
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+                    
+                    const response = await fetchWithBackoff(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    
+                    const audioData = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                    const mimeType = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        const sampleRate = parseInt(mimeType.match(/rate=(\d+)/)[1], 10);
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        
+                        const audio = new Audio(audioUrl);
+                        audio.play();
+                        
+                        audio.onended = () => {
+                            btn.disabled = false;
+                            btn.innerHTML = originalText;
+                        };
+
+                        showMessage('Reproduzindo áudio...', 'success');
+                    } else {
+                        showMessage('Erro ao gerar o áudio. Tente novamente.', 'error');
+                    }
+                } catch (error) {
+                    console.error('API Error:', error);
+                    showMessage('Erro ao se conectar com a IA. Por favor, verifique sua conexão.', 'error');
+                } finally {
+                    // Se houver erro, reabilitar o botão
+                    if (!btn.disabled) {
+                         btn.disabled = false;
+                         btn.innerHTML = originalText;
+                    }
+                }
+            });
+        });
+        
+    </script>
+</body>
+</html>
 
